@@ -6,7 +6,6 @@
 	<groupId>com.javabrazzers</groupId>
 	<artifactId>BrazzersBus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
 	<packaging>pom</packaging>
 
 	<name>BrazzersBus</name>
@@ -19,17 +18,17 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<properties>
-		<main.basedir>${project.basedir}</main.basedir>
+    <properties>
+        <main.basedir>${project.basedir}</main.basedir>
 		<!-- Analysis Tools for CI -->
 		<build-plugin.jacoco.version>0.7.9</build-plugin.jacoco.version>
 		<build-plugin.coveralls.version>4.3.0</build-plugin.coveralls.version>
-	</properties>
-
+    </properties>
+	
 	<modules>
-		<module>backend</module>
-		<module>frontend</module>
-	</modules>
+        <module>frontend</module>
+        <module>backend</module>
+    </modules>
 
 	<build>
 		<plugins>
@@ -65,6 +64,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
