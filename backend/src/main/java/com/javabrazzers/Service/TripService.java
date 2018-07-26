@@ -18,10 +18,10 @@ public class TripService {
     // как по мне когда  ищут дату не плохоб было, что бы показывало  не только в этот день автобусы, а  и что бы +- день
     // так как  миждународные  рейсы тяжело угадать  точный день отправления ии тупо клаццать каждый не удобно
     // я  например когда  самолетом лететь собирался пока нашел день рейса чтоб посмотреть билеты  норм так попател.
- public List<Trip> getTripList(String from, String to, LocalDateTime departureDate){
-     LocalDateTime dateMin = departureDate.minusDays(1);
-     LocalDateTime dateMax = departureDate.plusDays(1);
+ public List<BusRoute> getTripList(String departure, String arrival, LocalDateTime departureTime){
+     LocalDateTime dateMin = departureTime.minusDays(1);
+     LocalDateTime dateMax = departureTime.plusDays(1);
 
-     return tripRepository.findByFromAndToAndDepartureDateBetween(from, to, dateMin, dateMax);
+     return tripRepository.findByDepartureAndArrivalAndDepartureTimeBetween(departure, arrival, dateMin, dateMax);
  }
 }

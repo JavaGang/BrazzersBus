@@ -9,6 +9,6 @@ import java.util.List;
 
 //вывод лист рейсовкоторый отвечают парраметрам: куда, где, между минимальной датой и максимальной датой
 // (не уверен что правильно написано, нада потестить с готовой базой)
-public interface TripRepository extends JpaRepository<Trip, Long> {
-    List<Trip> findByFromAndToAndDepartureDateBetween (String from, String to, LocalDateTime dateMin, LocalDateTime dateMax );
+public interface TripRepository extends JpaRepository<BusRoute, Long> {
+    List<BusRoute> findByDepartureAndArrivalAndDepartureTimeBetween (String from, String to, LocalDateTime dateMin, LocalDateTime dateMax );
 }
