@@ -1,6 +1,7 @@
-package com.javabrazzers.Service;
+package com.javabrazzers.service;
 
-import com.javabrazzers.repository.TripRepository;
+import com.javabrazzers.domain.BusRoute;
+import com.javabrazzers.repository.BusRouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,9 @@ import java.util.List;
 
 //Логика класса Trip (рейсы)
 @Service
-public class TripService {
+public class BusRouteService {
  @Autowired
-    private TripRepository tripRepository;
+    private BusRouteRepository tripRepository;
 
 //  возвращаем лист рейсов по запросу откуда, куда, и дата.
     // как по мне когда  ищут дату не плохоб было, что бы показывало  не только в этот день автобусы, а  и что бы +- день

@@ -9,6 +9,7 @@ package com.javabrazzers.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -30,6 +31,7 @@ public class BusRoute {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime arrivalTime;
 
+    @NotNull
     private Double price;
 
     public BusRoute() {
