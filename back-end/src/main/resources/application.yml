@@ -1,0 +1,44 @@
+spring:
+  jackson:
+    serialization:
+     write_dates_as_timestamps: false
+  profiles:
+    active: test
+logging:
+  level:
+    ROOT: ERROR
+
+
+spring:
+  profiles: dev
+  jpa:
+    hibernate:
+        ddl-auto: validate
+    properties.hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        format_sql: true
+        enable_lazy_load_no_trans: true #If you would like to keep Lazy Load and you are using Spring Boot
+  datasource:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://
+      username: postgres
+      password: postgres
+
+spring:
+  profiles: test
+  jpa:
+     hibernate:
+      ddl-auto: validate
+     properties.hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        show_sql: true
+        format_sql: true
+     database-platform: H2
+  flyway:
+    enabled: false
+  datasource:
+      driverClassName: org.h2.Driver
+      url: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      password:
