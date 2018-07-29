@@ -23,11 +23,14 @@
 		<!-- Analysis Tools for CI -->
 		<build-plugin.jacoco.version>0.7.9</build-plugin.jacoco.version>
 		<build-plugin.coveralls.version>4.3.0</build-plugin.coveralls.version>
+		<swagger2.version>2.8.0</swagger2.version>
+		<guava.version>24.0-jre</guava.version>
+
     </properties>
 	
 	<modules>
         <module>frontend</module>
-        <module>backend</module>
+        <module>back-end</module>
     </modules>
 
 	<build>
