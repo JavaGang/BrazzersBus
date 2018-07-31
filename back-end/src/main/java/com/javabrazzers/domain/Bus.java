@@ -23,11 +23,7 @@ public class Bus extends BaseEntity {
 	@Size(min = 3, max = 100, message = "errors.bus.value.max")
 	@Column(name = "bus_brand", nullable = false, length = 255,unique = true)     //unique уникальное значение
 	private String busBrand;
-	@NotNull
-	@Size(min = 3, max = 100, message = "errors.bus.value.max")
-	@Column(name = "bus_brand", nullable = false, length = 255,unique = true)
 	private Integer placeAmount;
-	@Column
 	private Boolean condition;
 	private Boolean wifi;
 
