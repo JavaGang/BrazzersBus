@@ -1,7 +1,16 @@
 package com.javabrazzers.domain;
 
-public enum Role {
-	;
+import org.springframework.security.core.GrantedAuthority;
 
+public enum Role implements GrantedAuthority {
+	USER,
+	ADMIN,
+	GUEST,
+	MANAGER,
+	DRIVER;
 
+	@Override
+	public String getAuthority() {
+		return name();
+	}
 }
