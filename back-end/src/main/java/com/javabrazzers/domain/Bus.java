@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class Bus extends BaseEntity {
 	@NotBlank
-	@Size(min = 3, max = 100, message = "errors.bus.value.max")
+	@Size(min = 3, max = 100, message = "errors.bus.busBrand.value.max")
 	@Column(name = "bus_brand", nullable = false, length = 255,unique = true)     //unique уникальное значение
 	private String busBrand;
 	private Integer placeAmount;
