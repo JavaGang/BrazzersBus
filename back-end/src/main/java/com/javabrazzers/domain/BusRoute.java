@@ -24,7 +24,7 @@ public class BusRoute extends BaseEntity {
     @Column(name = "arrival_time", nullable = false, length = 7, unique = false)
     private LocalDateTime arrivalTime;
 
-    @Size(min = 1, max = 100, message = "errors.busflight.km.max")
+    @Size(min = 1, max = 100, message = "errors.busroute.km.max")
     @Column(name = "km", nullable = true, length = 10, unique = false)
 	private Integer km;
 
