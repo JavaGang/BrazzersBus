@@ -6,11 +6,11 @@ import java.util.Optional;
 
 public interface BaseService <E extends BaseEntity>{
     Optional<E> getById(Long id);
-    boolean exists(long id);
+    boolean exists(Long id);
     E create(E entity);
-    long count();
+    Long count();
     E update(E entity);
-    void delete(long id);
+    void delete(Long id);
     void delete(E entity);
     Iterable<E> getAll(Iterable<Long> ids);
 }

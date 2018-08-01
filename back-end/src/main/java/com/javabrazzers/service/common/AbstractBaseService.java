@@ -2,8 +2,14 @@ package com.javabrazzers.service.common;
 
 import com.javabrazzers.domain.BaseEntity;
 import com.javabrazzers.repository.common.BaseRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.NoResultException;
 import java.lang.reflect.ParameterizedType;
 import java.util.Locale;
 import java.util.Optional;
@@ -17,6 +23,8 @@ public abstract class AbstractBaseService <E extends BaseEntity> implements Base
 
     protected abstract BaseRepository<E, Long> getRepository();
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public Optional<E> getById(Long id) {
         checkArgument(id != null, "Received incoming parameter null!");  //гугл ультилита- проверка на null
@@ -28,37 +36,81 @@ public abstract class AbstractBaseService <E extends BaseEntity> implements Base
     }
 
     @Override
-    public boolean exists(long id) {
+    public boolean exists(Long id) {
+        if(id != null) return true;
         return false;
+
     }
 
     @Override
     public E create(E entity) {
-        return null;
+
+        logger.info("start create");
+
+        // Ensure the entity object to be created does NOT exist in the repository.
+        if (entity.getId() != null) {
+            // Cannot create Entity with specified ID value
+            logger.error("Attempted to create a Entity, id is not null, so, this entity exist.");
+            throw new EntityExistsException("The id attribute must be null to persist a new entity.");
+        }
+
+        E savedObj = getRepository().save(entity);
+
+        logger.info(" create");
+
+        return savedObj;
+
     }
 
     @Override
-    public long count() {
-        return 0;
+    public Long count() {
+        return getRepository().count();
     }
 
     @Override
     public E update(E entity) {
-        return null;
+
+        logger.info("update id:", entity.getId());
+
+        if(entity == null) {
+            logger.error("Entity can not be null.");
+            throw new NoResultException("Requested entity not found.");
+        }
+        if(entity.getId() == null) {
+            logger.error("ID can not be null.");
+            throw new NoResultException("Requested entity not found.");
+        }
+
+        logger.info("update id:", entity.getId());
+
+        return getRepository().save(entity);
+
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
+
+        checkArgument(id != null, "can not delete!");
+        getRepository().deleteById(id);
 
     }
 
     @Override
     public void delete(E entity) {
 
+        checkArgument(entity != null, "cannot delete!");
+        getRepository().delete(entity);
+
     }
 
     @Override
     public Iterable<E> getAll(Iterable<Long> ids) {
-        return null;
+
+        logger.info("findAll ");
+        Iterable<E> all = getRepository().findAll();
+        if(all == null) logger.info("Empty List");
+        logger.info(" findAll");
+        return all;
+
     }
 }
