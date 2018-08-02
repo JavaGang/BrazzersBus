@@ -21,7 +21,7 @@ import java.util.Collections;
         @Bean
         public Docket swaggerDolphinApi10() {
             return new Docket(DocumentationType.SWAGGER_2)
-                    .groupName("Название нашего апи-api-1.0")
+                    .groupName("1111Название нашего апи-api-1.0")
                     .select()
                     .apis(p -> {
                         if (p.produces() != null) {
