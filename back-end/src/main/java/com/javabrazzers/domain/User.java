@@ -23,7 +23,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User extends BaseEntity implements UserDetails {
-
+    //comment
     @NotBlank
     @Size(min = 2, max = 20, message = "errors.user.firstname.value.size")
     @Column(name = "fist_name", nullable = false, length = 20, unique = true)     //unique уникальное значение
